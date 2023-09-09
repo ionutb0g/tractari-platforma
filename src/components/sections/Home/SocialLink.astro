@@ -1,0 +1,23 @@
+---
+interface Props {
+  to: string;
+  label: string;
+  isPrimary?: boolean;
+}
+
+const { to, label, isPrimary } = Astro.props;
+---
+
+<a
+  href={to}
+  class:list={[
+    "flex items-center justify-between gap-4 w-full px-8 py-3 font-bold rounded-full shadow-md flex-1 lg:max-w-sm",
+    isPrimary ? "bg-orange-800 text-white" : "bg-orange-100 text-orange-800",
+  ]}
+>
+  <span
+    class="text-xs xs:text-sm md:text-xs lg:text-sm text-ellipsis overflow-hidden"
+    >{label}</span
+  >
+  <slot />
+</a>

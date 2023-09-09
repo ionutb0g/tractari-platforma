@@ -1,0 +1,103 @@
+---
+import Header from "@components/Header.astro";
+import Home from "@components/sections/Home/Home.astro";
+import Services from "@components/sections/Services.astro";
+import Pricing from "@components/sections/Pricing.astro";
+import About from "@components/sections/About.astro";
+import Footer from "@components/Footer.astro";
+import Contact from "@components/sections/Contact/Contact.astro";
+---
+
+<html lang="ro-RO">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/webp" href="/logo.webp" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Servicii rapide de tractări auto. Oriunde în România"
+    />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="tractari-platforma.ro" />
+    <meta property="og:title" content="Tractări Platformă" />
+    <meta
+      property="og:image"
+      content="https://www.tractari-platforma.ro/logo.jpeg"
+    />
+    <meta property="og:image:width" content="581" />
+    <meta property="og:image:height" content="580" />
+    <meta
+      property="og:description"
+      content="Servicii rapide de tractări auto. Oriunde în România"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="https://www.tractari-platforma.ro/logo.jpeg"
+    />
+    <title>Tractari Platforma</title>
+  </head>
+  <body class="w-full">
+    <dialog
+      id="closed_dialog"
+      class="p-0 z-20 w-full h-screen relative overflow-y-hidden backdrop:bg-gray-500 backdrop:bg-opacity-50 bg-transparent open:animate-fade-in rounded-lg"
+    >
+      <div
+        class="absolute bottom-0 lg:bottom-1/2 left-1/2 -translate-x-1/2 p-4 h-min rounded-lg bg-white w-full text-center flex flex-col gap-4 max-w-md"
+      >
+        <h1 class="text-xl font-bold">Momentan indisponibil</h1>
+        <p class="text-sm">
+          Programul de lucru este intre orele
+          <span class="whitespace-nowrap">
+            <time datetime="9:00">9:00</time>
+             - <time datetime="17:00">17:00</time>
+          </span>
+        </p>
+        <button
+          id="close_dialog_btn"
+          class="text-xs font-bold uppercase p-4 bg-orange-800 rounded-lg text-white"
+        >
+          Revin mai tarziu
+        </button>
+      </div>
+    </dialog>
+
+    <Header />
+    <Home />
+    <Services />
+    <Pricing />
+    <About />
+    <Contact />
+    <Footer />
+  </body>
+</html>
+
+<style>
+  body:has(dialog[open]) {
+    position: fixed;
+    overflow-y: hidden;
+  }
+</style>
+
+<script>
+  const VERIFICATION_INTERVAL = 1000 * 60 * 10;
+  const dialog = document.getElementById("closed_dialog") as HTMLDialogElement;
+  const closeDialogButton = document.getElementById(
+    "close_dialog_btn"
+  ) as HTMLButtonElement;
+
+  closeDialogButton.addEventListener("click", () => dialog?.close?.());
+
+  function isWebsiteOpen(): boolean {
+    const currentHour = new Date().getHours();
+    return currentHour >= 9 && currentHour < 17;
+  }
+
+  function dispatchDialog() {
+    isWebsiteOpen() ? dialog?.close?.() : dialog.showModal?.();
+  }
+
+  setTimeout(dispatchDialog, 3000);
+  setInterval(dispatchDialog, VERIFICATION_INTERVAL);
+</script>

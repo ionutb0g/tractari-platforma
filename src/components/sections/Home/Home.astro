@@ -1,0 +1,57 @@
+---
+import Section from "@components/Section.astro";
+import EnvelopeIcon from "@components/icons/EnvelopeIcon.astro";
+import WhatsappIcon from "@components/icons/WhatsappIcon.astro";
+import PhoneIcon from "@components/icons/PhoneIcon.astro";
+import SocialLink from "./SocialLink.astro";
+---
+
+<Section class="flex flex-col items-center lg:flex-row-reverse">
+  <picture class="flex-1 w-full lg:px-16 lg:py-8">
+    <source
+      srcset="/banner/x360.avif 360w, /banner/x512.avif 512w, /banner/x720.avif 720w"
+      type="image/avif"
+    />
+    <source
+      srcset="/banner/x360.webp 360w, /banner/x512.webp 512w, /banner/x720.webp 720w"
+      type="image/webp"
+    />
+    <source
+      srcset="/banner/x360.png 360w, /banner/x512.png 512w, /banner/x720.png 720w"
+      type="image/png"
+    />
+    <img src="/banner/x720.png" alt="" class="w-full mx-auto mb-4" />
+  </picture>
+  <div class="w-full flex flex-col gap-2 flex-1 text-center lg:text-start">
+    <h2 class="text-xl lg:text-3xl font-bold">
+      Servicii rapide de tractări auto
+    </h2>
+    <h3 class="text-lg lg:text-2xl font-semibold">Oriunde în România</h3>
+    <p class="font-light text-sm">
+      Îți stăm la dispoziție oriunde ai nevoie, oricând ai nevoie.
+    </p>
+
+    <div class="flex flex-col md:flex-row lg:flex-col gap-3 my-4">
+      <SocialLink
+        isPrimary
+        to="https://api.whatsapp.com/send?phone=+40760770913"
+        label="Whatsapp"
+      >
+        <WhatsappIcon
+          class="h-6 w-6 md:w-4 md:h-4 lg:w-6 lg:h-6 flex-shrink-0"
+        />
+      </SocialLink>
+      <SocialLink to="tel:+40760770913" label="+40 760 770 913">
+        <PhoneIcon class="h-6 w-6 md:w-4 md:h-4 lg:w-6 lg:h-6 flex-shrink-0" />
+      </SocialLink>
+      <SocialLink
+        to="mailto:stefitrans2000@gmail.com"
+        label="stefitrans2000@gmail.com"
+      >
+        <EnvelopeIcon
+          class="h-6 w-6 md:w-4 md:h-4 lg:w-6 lg:h-6 flex-shrink-0"
+        />
+      </SocialLink>
+    </div>
+  </div>
+</Section>

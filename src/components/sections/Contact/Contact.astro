@@ -1,0 +1,42 @@
+---
+import Section from "@components/Section.astro";
+import ClockIcon from "@components/icons/ClockIcon.astro";
+import EnvelopeIcon from "@components/icons/EnvelopeIcon.astro";
+import MapPinIcon from "@components/icons/MapPinIcon.astro";
+import PhoneIcon from "@components/icons/PhoneIcon.astro";
+import WhatsappIcon from "@components/icons/WhatsappIcon.astro";
+import ContactInfo from "./ContactInfo.astro";
+---
+
+<Section>
+  <h2 class="text-lg text-center font-bold mb-4">Contact</h2>
+  <ul class="flex flex-col gap-4 md:flex-row my-4">
+    <ContactInfo label="Whatsapp">
+      <WhatsappIcon class="w-8 h-8" />
+      <p slot="info" class="text-xs">+40 760 770 913</p>
+    </ContactInfo>
+    <ContactInfo label="Telefon">
+      <PhoneIcon class="w-8 h-8" />
+      <p slot="info" class="text-xs">+40 760 770 913</p>
+    </ContactInfo>
+    <ContactInfo label="E-mail">
+      <EnvelopeIcon class="w-8 h-8" />
+      <p slot="info" class="text-xs">stefitrans2000@gmail.com</p>
+    </ContactInfo>
+  </ul>
+  <ul class="flex flex-col gap-4 md:flex-row my-4">
+    <ContactInfo label="Sediu">
+      <MapPinIcon class="w-8 h-8" />
+      <p slot="info" class="text-xs">
+        Strada Sublocotenent Popa nr. 5, București
+      </p>
+    </ContactInfo>
+    <ContactInfo label="Program">
+      <ClockIcon class="w-8 h-8" />
+      <p slot="info" class="text-xs">
+        Luni - Sâmbătă între orele
+        <time datetime="9:00">9:00</time>-<time datetime="17:00">17:00</time>
+      </p>
+    </ContactInfo>
+  </ul>
+</Section>
